@@ -18,3 +18,44 @@ alcanzar lograr crear mi aplicacion entonces en primer lugar que hice fue verifi
  eso crei una carpeta static dentro se encuentra mi estilo.css para poder ejecutar mi aplicacion se necesita seguir esos pasos ,primero colocar cd evaluaciones y dir para ver que hay dentro evaluaciones va aparacer sumativa1 y dir para ver lo que hay dentro de sumativa1 ahi va encontrar mi proyecto Gestion_producto luego cd para acceder a gestion_producto y dir va aparecer mis archivos manage.py y ahi se colocar python manage.py runserver se genero el puerto http://127.0.0.1:8000/ pero la ruta principal es http://127.0.0.1:8000/productos.
  eso se fue todo gracias hasta pronto Profesor Andres.
 >>>>>>> f96c0e0 (se agrega mi proyecto)
+
+
+segunda version de mi proyecto sumativa2 
+
+Estructura del Proyecto
+Aplicación principal: CRUD de productos, categorías, marcas y características.
+Templates: register.html, result.html, index.html.
+Filtros: Filtrar productos por marca, categoría y características.
+
+# Gestión de Productos S.A.
+
+Proyecto de Django para la gestión de productos, permitiendo CRUD de productos con categorías, marcas y características.
+
+## Requisitos
+- Python 3.x
+- Django 4.x
+- Git
+
+## Instalación
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/tu-repositorio.git
+   cd gestion_productos
+
+  2. Realiza las migraciones de la base de datos:
+
+  python manage.py migrate.
+
+  3.Crea un superusuario:
+
+  python manage.py createsuperuser
+
+  4.Ejecuta el servidor de desarrollo:
+
+  python manage.py runserver
+
+  5.Accede a la aplicación en tu navegador:
+
+  http://localhost:8000/admin/
+
+  6.http://localhost:8000/productos

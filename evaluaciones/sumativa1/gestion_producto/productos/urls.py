@@ -2,7 +2,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.lista_productos, name='lista_productos'),  # Lista de productos
-    path('crear/', views.crear_producto, name='crear_producto'),  # Registro de productos
-    path('resultado/', views.resultado_producto, name='resultado_producto'),  # Resultado de validación
+    path('', views.index, name='productos'),
+    path('register/', views.register, name='register'),
+    path('result/<int:producto_id>/', views.result, name='result'),
+    path('product/<int:producto_id>/', views.product_detail, name='product_detail'),
+    path('product/edit/<int:producto_id>/', views.product_edit, name='product_edit'),
+    path('product/delete/<int:producto_id>/', views.product_delete, name='product_delete'),
+  
 ]

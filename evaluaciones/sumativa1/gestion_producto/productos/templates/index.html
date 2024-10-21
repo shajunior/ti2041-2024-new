@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">  <!-- Asegúrate de que tienes este archivo de CSS -->
+</head>
+<body>
+    <h1>Gestión de Productos</h1>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'register' %}">Registrar Nuevo Producto</a></li>
+            <li><a href="{% url 'productos' %}">Ver Productos</a></li>
+        </ul>
+    </nav>
+
+    <h2>Lista de Productos</h2>
+
+    <form method="GET" action="{% url 'productos' %}">
+        <label for="filter">Filtrar por nombre:</label>
+        <input type="text" id="filter" name="filter" placeholder="Buscar producto...">
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Marca</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.codigo }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>{{ producto.marca }}</td>
+                    <td>
+                        <a href="{% url 'product_detail' producto.id %}">Ver Detalles</a>
+                        <a href="{% url 'product_edit' producto.id %}">Editar</a>
+                        <a href="{% url 'product_delete' producto.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No hay productos disponibles.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

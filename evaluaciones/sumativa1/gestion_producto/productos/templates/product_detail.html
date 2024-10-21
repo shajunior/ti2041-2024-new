@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Detalles del Producto</h1>
+    <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+    <p><strong>Código:</strong> {{ producto.codigo }}</p>
+    <p><strong>Precio:</strong> {{ producto.precio }}</p>
+    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+    <p><strong>Marca:</strong> {{ producto.marca }}</p>
+    <a href="{% url 'productos' %}">Volver a la lista de productos</a>
+    <a href="{% url 'product_edit' producto.id %}">Editar Producto</a>
+    <form method="post" action="{% url 'product_delete' producto.id %}">
+        {% csrf_token %}
+        <button type="submit">Eliminar Producto</button>
+    </form>
+</body>
+</html>
