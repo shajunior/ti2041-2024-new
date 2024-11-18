@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Producto</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">  <!-- Asegúrate de tener este archivo de CSS -->
+    <!-- Vinculación del archivo CSS -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <h1>Registrar Producto</h1>
+    
+    <!-- Formulario para registrar un producto -->
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_p }}  <!-- Muestra el formulario como párrafos -->
         <button type="submit">Registrar Producto</button>
     </form>
+
+    <!-- Enlace para volver a la lista de productos -->
     <a href="{% url 'productos' %}">Volver a la lista de productos</a>
 </body>
 </html>
