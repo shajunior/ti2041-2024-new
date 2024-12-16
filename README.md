@@ -59,3 +59,111 @@ Proyecto de Django para la gestión de productos, permitiendo CRUD de productos 
   http://localhost:8000/admin/
 
   6.http://localhost:8000/productos
+
+
+  # Proyecto API con JWT
+
+Este proyecto implementa un sistema de autenticación basado en JSON Web Tokens (JWT) utilizando Django y Django REST Framework. A continuación, se describe cómo configurar y utilizar la API.
+
+## Configuración Inicial
+
+1. Clona el repositorio:
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   cd <NOMBRE_DEL_PROYECTO>
+   ```
+
+2. Instala las dependencias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Configura las variables de entorno:
+   - Crea un archivo `.env` en la raíz del proyecto.
+   - Agrega la siguiente información al archivo `.env`:
+     ```env
+     SECRET_KEY=tu_secreto
+     DEBUG=True
+     DATABASE_URL=sqlite:///db.sqlite3
+     ```
+
+4. Realiza las migraciones de la base de datos:
+   ```bash
+   python manage.py migrate
+   ```
+
+5. Crea un superusuario para acceder al panel de administración:
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+6. Inicia el servidor:
+   ```bash
+   python manage.py runserver
+   ```
+
+## Uso de la API
+
+### Endpoints Principales
+
+1. **Obtener Token de Acceso y Refresco:**
+   - URL: `/api/token/`
+   - Método: POST
+   - Cuerpo de la solicitud:
+     ```json
+     {
+       "username": "usuario_prueba",
+       "password": "contraseña_prueba"
+     }
+     ```
+   - Respuesta:
+     ```json
+     {
+       "access": "<token_de_acceso>",
+       "refresh": "<token_de_refresco>"
+     }
+     ```
+
+2. **Refrescar Token de Acceso:**
+   - URL: `/api/token/refresh/`
+   - Método: POST
+   - Cuerpo de la solicitud:
+     ```json
+     {
+       "refresh": "<token_de_refresco>"
+     }
+     ```
+   - Respuesta:
+     ```json
+     {
+       "access": "<nuevo_token_de_acceso>"
+     }
+     ```
+
+3. **Endpoints Protegidos:**
+   Para acceder a los endpoints protegidos, incluye el token de acceso en el encabezado de la solicitud:
+   ```
+   Authorization: Bearer <token_de_acceso>
+   ```
+
+### Usuario de Prueba
+
+- **Usuario:** `usuario_prueba`
+- **Contraseña:** `contraseña_prueba`
+
+Este usuario ha sido creado para facilitar las pruebas iniciales.
+
+## Documentación
+
+La documentación completa de la API está disponible en la siguiente dirección:
+
+```
+http://localhost:8000/docs/
+```
+
+Esta documentación fue generada utilizando Swagger/OpenAPI y contiene detalles sobre todos los endpoints disponibles.
+
+## Notas
+
+- Asegúrate de que el servidor esté en ejecución antes de intentar acceder a los endpoints.
+- Modifica las configuraciones según sea necesario para el entorno de producción (e.g., desactiva `DEBUG` y utiliza un secreto más seguro).
